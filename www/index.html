@@ -1,7 +1,7 @@
-ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
-        <title>Depana - Avisos</title>
+        <title>Aj SPP - Avisos</title>
         <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"> 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" /> 
@@ -174,7 +174,7 @@
                 'markerGroup': null,
                 'markerGroupDetail': null,
                 'llistaInicial': 0,
-                //'map' : {}, //  Objecte Leaflet del mapa per evitar problemes d'inicialitzaciÃ³
+                //'map' : {}, //  Objecte Leaflet del mapa per evitar problemes d'inicialització
                 'mapDetail' : {}, //    Objecte Leaflet del mapa Detall
                 'wpid' : 0,
                 'modeNavegacio' : null,
@@ -202,12 +202,12 @@
                 'data':{},
                 'adrecaOSM':null,
 				'params': {  projecte: 'depana', 'codi' : null , 'usuari_codi':null, 'adreca': null, 'descripcio': null, 'imatge': null , 'den_x' : null , 'den_y':null, 'usu_x': null, 'usu_y': null, 'correu': null , 'risc': null},
-                'primeraUbicaciÃ³' :  1,
+                'primeraUbicació' :  1,
 				'codiAvisVigent' : null,
 				'darrerAvislista' : null
             };
             
-            //-- ParÃ metres d'inicialitzaciÃ³
+            //-- Paràmetres d'inicialització
             
 			//actualitzaForm();
 			
@@ -217,7 +217,7 @@
             $( window ).on( 'orientationchange', function( event ) {ajustaPortada();});                
             
             
-            //-- InicialitzaciÃ³ Portada     
+            //-- Inicialització Portada     
             
             $( document ).on('beforepageshow' ,'#portada', function(){ 
                 $(window).bind('resize', function (){   ajustaFinestres();
@@ -236,8 +236,8 @@
             $( document ).on('pageshow','#pageMap', function(){
                 inicialitzaMapa(); 
                 ajustaFinestres(); 
-				//recuperaDarrerAvis();	// Eliminar lÃ­nia nomÃ©s demo
-				//recuperaElements();	// Eliminar lÃ­nia nomÃ©s demo
+				//recuperaDarrerAvis();	// Eliminar línia només demo
+				//recuperaElements();	// Eliminar línia només demo
 				//$(':mobile-pagecontainer').pagecontainer('change', '#llistaAvisos');
             });
             
@@ -248,7 +248,7 @@
             //-- Inicia llistaElements          
             $( document ).on('pagebeforeshow','#llistaElements', function(){
                 //ajustaFinestres();
-                //creaRelacioPunts(); Bloquejat l'accÃ©s al detall
+                //creaRelacioPunts(); Bloquejat l'accés al detall
             });         
             
 
@@ -374,7 +374,7 @@
 			
             function actualitzaFormulari(){ }
             //-- Funcions del mapa
-            //-- InicialitzaciÃ³ del mapa 
+            //-- Inicialització del mapa 
 			
             function inicialitzaMapa(){                 
  	
@@ -405,7 +405,7 @@
 								attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, '
 									+
 									'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-									'Imagery Â© <a href="http://mapbox.com">Mapbox</a>',
+									'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 								id: 'examples.map-i875mjb7'
 							});
 							break;
@@ -437,7 +437,7 @@
                     
                     case 'buscaPosicio':
                         txtPeu =    ' <div style="width: 100%; margin-left: 5%; color: rgb(115, 115, 115); text-shadow: 0px 0px rgb(0, 0, 0); background-color: rgb(255, 255, 255); padding: 0.5em 0em 0.5em; height: 1.3em; margin-bottom: 0.2em; margin-top: 0.2em;">'
-                                   +    '    Buscant localitzaciÃ³ ... <i class="fa fa-spin fa-spinner"/>'
+                                   +    '    Buscant localització ... <i class="fa fa-spin fa-spinner"/>'
                                    +    ' </div>';
                         break;
 
@@ -450,7 +450,7 @@
                             var seguentFoto = foto + 1;
                             var anteriorFoto = foto - 1;
 							if ( punt.descripcio.length < 1 ){
-								punt.descripcio = 'IntroduÃ¯u descripciÃ³';
+								punt.descripcio = 'Introduïu descripció';
 							}
 							visor.codiAvisVigent = punt.codi;
 							txtPeu =      '   <div style="z-index:0;border-top: 2px solid #b9b900;width:100%;height:215px;overflow:hidden"> '                                 
@@ -511,7 +511,7 @@
             }
             
             function activaLocator(){
-			// Activa la localitzaciÃ³ del plugin de leaflet 
+			// Activa la localització del plugin de leaflet 
 				visor.locate = L.control.locate( {
 					position: 'topright',  // set the location of the control
 					drawCircle: true,  // controls whether a circle is drawn that shows the uncertainty about the location
@@ -535,11 +535,11 @@
 					},
 					showPopup: true, // display a popup when the user click on the inner marker
 					strings: {
-						title: "Troba la meva posiciÃ³",  // title of the locate control
+						title: "Troba la meva posició",  // title of the locate control
 						metersUnit: "meters", // string for metric units
 						feetUnit: "feet", // string for imperial units
-						popup: "PosiciÃ³ Actual",  // text to appear if user clicks on circle
-						outsideMapBoundsMsg: "Et trobes fora dels lÃ­mits del mapa" // default message for onLocationOutsideMapBounds
+						popup: "Posició Actual",  // text to appear if user clicks on circle
+						outsideMapBoundsMsg: "Et trobes fora dels límits del mapa" // default message for onLocationOutsideMapBounds
 					},
 					locateOptions: {maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }  // define location options e.g enableHighAccuracy: true or maxZoom: 10
 				});
@@ -548,13 +548,13 @@
 				visor.locate.addTo(visor.map);
                 visor.locate.start();
 				
-				//-- FunciÃ³ quan troba la posiciÃ³
+				//-- Funció quan troba la posició
 				visor.map.on('locationfound', posicioTrobada);
 			}  			
 
-            // -- Recupera la posiciÃ³ actual i la introdueix a les variables corresponents
+            // -- Recupera la posició actual i la introdueix a les variables corresponents
             function posicioTrobada(e) {
-                //visor.alertaBuscantPosicio == 0 ? alert('BuscantPosiciÃ³') : null;
+                //visor.alertaBuscantPosicio == 0 ? alert('BuscantPosició') : null;
                 var latitude = e.latlng.lat;
                 var longitude = e.latlng.lng;
                 var estatAnterior = visor.posicioActual.trobat;
@@ -577,7 +577,7 @@
                     visor.primeraUbicacio = 0;
                 }            
             } 
-            //-- Mostra la icona en el punt actual TODO: unificar funciÃ³ anterior
+            //-- Mostra la icona en el punt actual TODO: unificar funció anterior
 			
             function centraPosicio(punt,zoom){
                 visor.map.setView(punt, zoom);
@@ -600,10 +600,10 @@
                         .addTo(visor.map)
                         .bindPopup(
                             "<h2 style='font-family:Arial;font-size:1.5em;height:20px'>" 
-                            + ' La teva posiciÃ³'  
+                            + ' La teva posició'  
                             +  " <img width='30' src='images/troba.png' style='float:left;margin-right:2em'/ >" 
                             + "</h2>" 
-                            + ' PosiciÃ³ actual aproximada'                  
+                            + ' Posició actual aproximada'                  
                             );
                 }
             }
@@ -617,7 +617,7 @@
                 }
             }     
             
-            // /* Recupera el text de l'adreÃ§a propera segons OpenStreetMap            
+            // /* Recupera el text de l'adreça propera segons OpenStreetMap            
             function recuperaAdreca(punt){ 
                 $.getJSON("http://nominatim.openstreetmap.org/reverse?json_callback=?", 
                     { format: "json", lat: punt.lat, lon: punt.lng, zoom: 18, addressdetails: 1 },
@@ -631,7 +631,7 @@
                 alert(e.message);
             }
 
-            //-- Enviament de la imatge i actualitzaciÃ³ de la base de dades
+            //-- Enviament de la imatge i actualització de la base de dades
             /*
             function uploadFromGallery_2() {
                 //Retrieve image file location from specified source
@@ -677,7 +677,7 @@
 				params.projecte = 'depana';
                 params.usuari_codi = 'Gomis';
 				params.adreca = visor.adrecaOSM;
-                params.descripcio = 'SimulaciÃ³ de descripcio';
+                params.descripcio = 'Simulació de descripcio';
                 params.imatge = options.fileName;//file.name;
                 params.den_x = parseFloat(visor.posicioCamera.lng);
                 params.den_y = parseFloat(visor.posicioCamera.lat);
@@ -735,7 +735,7 @@
 						//setTimeout(function(){missatgePeuMapa( 'mostraFoto', visor.data.length - 1 );}, 700);//creaImatgePujada(visor.params);
 					},
 					error: function(xhr, textStatus, errorThrown){
-						alert("Error detectat. Tona a introduir descripciÃ³." + xhr.responseText 
+						alert("Error detectat. Tona a introduir descripció." + xhr.responseText 
 							+ "\nstatus: " + textStatus 
 							+ "\nerror: " + errorThrown);
 					}                                       
@@ -904,7 +904,7 @@
                                             + '             </p> '      
                                             + '         </div> '
                                             + '         <div class="divContImatgeDades" style="font-size:12px;height:auto;margin-left:20px;margin-bottom:10px;"> '
-                                            + '             <p><b> AdreÃ§a: </b>' 
+                                            + '             <p><b> Adreça: </b>' 
                                             +                   params.codi
                                             + '             </p> '      
                                             + '         </div> '
@@ -927,10 +927,10 @@
                                             + '          </div> '
                                             + '     </div>');
                                             
-                // $.mobile.changePage($('#imatgePujada'),'pop'); Per ara bloquejat - Nomostra les dades de la imatge pujada per deixar temps a que pugi a l'aplicaciÃ³
+                // $.mobile.changePage($('#imatgePujada'),'pop'); Per ara bloquejat - Nomostra les dades de la imatge pujada per deixar temps a que pugi a l'aplicació
             }
             
-            // CreaciÃ³ del llistat de punts 
+            // Creació del llistat de punts 
             function creaRelacioPunts(){
                 $.each(visor.data,function(i,punt){
                     /*var puntMapa = $('<div/>')
@@ -960,7 +960,7 @@
                 $('#relacioPuntsMapa').height($(window).height() - 250);    
             }
             
-            // Situar la icona de la cÃ mera
+            // Situar la icona de la càmera
             function placeCamera(e){
                 visor.map.removeLayer(visor.markerCamera);
                 var iconSizeX = 030;
@@ -979,7 +979,7 @@
                     .bindPopup(
                         "<h2 style='font-family:Arial;font-size:1.2em;height:auto;width:200px'>" 
                         +  " <img width='30' src='images/camera-icon.png' style='float:left;margin-right:2em'/ >"   
-                        + ' Indret on es farÃ  la fotografia'  
+                        + ' Indret on es farà la fotografia'  
                         + "</h2>" 
                         + ''                    
                         )
@@ -999,7 +999,7 @@
     <body style="font-family:arial">
     
         
-        <!--------------------------------  PÃ gina Mapa ------------------------------------------->     
+        <!--------------------------------  Pàgina Mapa ------------------------------------------->     
         <div data-role="page" id="pageMap" > 
             <!------------------ Header ----------recuperaElements()----->    
 			<div id="header" style="border-width: 0px; height:2.3em;background-color: #359; color: rgb(250, 250, 250); font-family: inherit; font-size: 1.1em; font-weight: lighter; text-shadow: 0px 0px; z-index: 1; " role="banner" data-role="header" class="ui-header ui-bar-inherit">
@@ -1013,10 +1013,10 @@
 			
 					     style="float: left; font-weight:bolder; text-align: center; font-family: Verdana; color: rgb(255, 255, 255); width: 100%; height: 1.1em; margin-top: 0.25em;"> 
 						
-							Depana Sistema Avisos
+							Aj SPP Sistema Avisos
 								
 				     </div>
-					<div style="clear: both; text-align: center; font-family: Verdana; color: rgb(255, 255, 255); font-size: 0.6em; width: 100%; height: 15px; margin-top: -1px;"> Comunicacions mÃ²bils </div>
+					<div style="clear: both; text-align: center; font-family: Verdana; color: rgb(255, 255, 255); font-size: 0.6em; width: 100%; height: 15px; margin-top: -1px;"> Comunicacions mòbils </div>
 				</div>
 				<div id="troba5" style="float: right;margin-top: -1.4em;height: 24px;font-size: 1.3em;width: 5%;margin-right: 12px;" onclick="navigator.app.exitApp();">
 					<i class="fa fa-close"></i>
@@ -1075,7 +1075,7 @@
         </div>
 
 
-        <!--------------------------------  CÃ rrega dades ---------------------------------> 
+        <!--------------------------------  Càrrega dades ---------------------------------> 
 		
         <!--------------------------------  Pas 1/4       ---------------------------------> 
 		<div data-role="page" 
@@ -1088,7 +1088,7 @@
 
             <div data-role="content" id="contImatgePujada"> 
                 <form id="frmImatgePujada" data-ajax="false" >
-					<label for="imatge-1">Revisa la imatge adreÃ§ada
+					<label for="imatge-1">Revisa la imatge adreçada
 				</label>
 					<img style="width:80%;margin:0 10%" id="imatge-1" src=""/> 				
 					<a class="ui-btn ui-corner-all ui-icon-delete " 
@@ -1098,7 +1098,7 @@
 					<a onclick="visor.params.descripcio=$('#textarea-1').val();"   
 					   class="ui-btn ui-btn-b ui-corner-all ui-icon-delete " 
 					   href="#avisMapa2">
-						SegÃ¼ent
+						Següent
 				    </a>
 			    </form>            
             </div>
@@ -1120,12 +1120,12 @@
 		     id="avisMapa2"> 
 			 
             <div data-role="header"  role="banner" id = "headerDetail" style="z-index: 1; box-shadow:0px 2px 6px #444444;">         
-                 <h1>UbicaciÃ³ AvÃ­s</h1> 
+                 <h1>Ubicació Avís</h1> 
             </div>           
 
             <div data-role="content" id="contImatgePujada"> 
                 <form id="frmImatgePujada" data-ajax="false" >
-					<label for="textarea-1">AdreÃ§a automÃ tica - Afegiu observacions per identificar</label>
+					<label for="textarea-1">Adreça automàtica - Afegiu observacions per identificar</label>
 					<textarea name="textarea-1" id="textarea-1"></textarea>
 					<a class="ui-btn ui-btn-a ui-corner-all ui-icon-delete " 
 					   href="#pageMap">
@@ -1135,7 +1135,7 @@
 					<a onclick="visor.params.adreca=$('#textarea-1').val();"
 					   class="ui-btn ui-btn-b ui-corner-all ui-icon-delete " 
 					   href="#imatgePujada2">
-						SegÃ¼ent
+						Següent
 				    </a>
 			    </form>            
             </div>
@@ -1155,13 +1155,13 @@
 			 data-close-btn="none" 
 			 id="imatgePujada2"> 
             <div data-role="header"  role="banner" id ="headerImatgePujada" style="z-index: 1; box-shadow:0px 2px 6px #444444;">                
-                 <h1>IdentificaciÃ³ del risc </h1>         
+                 <h1>Identificació del risc </h1>         
             </div>
  
             <div data-role="content" id="contImatgePujada"> 
 				<form>
 					<!--fieldset data-role="controlgroup">
-						<legend>Trieu una opciÃ³:</legend>
+						<legend>Trieu una opció:</legend>
 						<input name="checkbox-v-2a" id="checkbox-v-2a" type="checkbox">
 						<label for="checkbox-v-2a">Normal</label>
 						<input name="checkbox-v-2b" id="checkbox-v-2b" type="checkbox">
@@ -1169,7 +1169,7 @@
 						<input name="checkbox-v-2c" id="checkbox-v-2c" type="checkbox">
 						<label for="checkbox-v-2c">Molt Urgent</label>
 					</fieldset-->
-				    <label for="textarea-1b">DescripciÃ³</label>
+				    <label for="textarea-1b">Descripció</label>
 					<textarea name="textarea-1b" id="textarea-1b"></textarea>
 
 					<a class="ui-btn ui-btn-a ui-corner-all ui-icon-delete " 
@@ -1180,7 +1180,7 @@
 					    onclick="visor.params.descripcio=$('#textarea-1b').val();"
 					    href="#imatgePujada3" 
 					    class="ui-btn ui-btn-b ui-corner-all ui-icon-delete " >
-						SegÃ¼ent
+						Següent
 				    </a>
 					 <!-- onclick="visor.params.risc = $('#checkbox-v-2a').val();"  -->
 				</form>           
@@ -1203,7 +1203,7 @@
 
             <div data-role="content" id="contImatgePujada2"> 
                 <form id="frmActDesc3" data-ajax="false" >
-					<label for="correu">Correu electrÃ²nic de contacte per informar de seguiment</label>
+					<label for="correu">Correu electrònic de contacte per informar de seguiment</label>
 					<textarea name="correu" id="correu"></textarea>
 					<a class="ui-btn ui-btn-a ui-corner-all ui-icon-delete " 
 					   href="#pageMap">
@@ -1213,7 +1213,7 @@
 					<a onclick="visor.params.correu = $('#correu').val(); actualitzaDescripcio()"  
 					   href="#pageMap"
 					   class="ui-btn ui-btn-b ui-corner-all ui-icon-delete " >
-						AdreÃ§ar les noves dades 
+						Adreçar les noves dades 
 				    </a>
 			    </form>            
             </div>
@@ -1286,7 +1286,7 @@
 
 
 		
-        <!--  PÃ gina Imatge Pujada -->      
+        <!--  Pàgina Imatge Pujada -->      
         <div data-role="page" data-dialog="false" id="imatgePujada"> 
             <div data-role="header"  role="banner" id ="headerImatgePujada" style="z-index: 1; box-shadow:0px 2px 6px #444444;">                
                  <h1>Identifica </h1>         
@@ -1294,11 +1294,11 @@
  
             <div data-role="content" id="contImatgePujada"> 
                 <form id="frmActDesc" data-ajax="false" >
-					<label for="textarea-1">DescripciÃ³ </label>
+					<label for="textarea-1">Descripció </label>
 					<textarea name="textarea-1" id="textarea-1"></textarea>
 					<!--a onclick="actualitzaDescripcio()" data-rel="back" data-theme="b" class="ui-btn ui-corner-all ui-icon-delete " href="#"-->
 					<a onclick="visor.params.descripcio=$('#textarea-1').val();"  data-theme="b" class="ui-btn ui-corner-all ui-icon-delete " href="#imatgePujada2">
-						SegÃ¼ent
+						Següent
 				    </a>
 			    </form>            
             </div>
