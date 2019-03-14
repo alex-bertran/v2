@@ -1,8 +1,8 @@
 <?php
 $servername = "mysql.hostinger.es";
-$username = "u261058157_admin";
-$password = "mImUVY2g";
-$dbname = "u261058157_ma";
+$username = "u721919901_app";
+$password = "RupeVaneSe";
+$dbname = "u721919901_app";
 $codi = $_POST['codi'];
 $usuari_codi= $_POST['usuari_codi'];
 $adreca = $_POST['adreca'];
@@ -30,8 +30,8 @@ mysqli_close($conn);
 
 // Tramesa del correu electrònic
 
-$to  = 'aidan@example.com' . ', '; // note the comma
-$to .= 'wez@example.com';
+$to  = 'xat@xat.cat' . ', '; // note the comma
+$to .= 'xat@xat.cat';
 
 // subject
 $subject = 'Birthday Reminders for August';

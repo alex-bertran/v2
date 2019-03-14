@@ -1,9 +1,9 @@
 <?php
 	header("Access-Control-Allow-Origin: *");
 	$servername = "mysql.hostinger.es";
-	$username = "u261058157_admin";
-	$password = "mImUVY2g";
-	$dbname = "u261058157_ma";
+	$username = "u721919901_app";
+	$password = "RupeVaneSe";
+	$dbname = "u721919901_app";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
